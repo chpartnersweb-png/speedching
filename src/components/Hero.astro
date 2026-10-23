@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import vehicle from '../assets/line_oa_chat_261021_103626.jpg';
+import PhoneLink from './PhoneLink.astro';
+import { site } from '../data/site';
+---
+<section class="hero section-shell" aria-labelledby="hero-title">
+  <div class="hero__copy">
+    <p class="hero__eyebrow"><span></span>大分市の代行運転</p>
+    <h1 id="hero-title" class="hero__title" aria-label={site.name}><span class="hero__speed" aria-hidden="true">スピード</span><span class="hero__chingu" aria-hidden="true">チング<span class="hero__title-line" data-neon-line></span></span></h1>
+    <p class="hero__message">すぐに、駆けつけます。</p>
+    <p class="hero__intro">お帰りの代行も、車のお預かりも。<br />まずはスピードチングにお電話ください。</p>
+    <div class="hero__business">
+      <p><span class="hero__business-label">通常営業</span><strong>{site.businessDays}</strong><span>{site.businessHours}</span></p>
+      <p class="hero__reservation">{site.reservation}</p>
+    </div>
+    <PhoneLink class="hero__phone" />
+  </div>
+  <div class="hero__visual">
+    <div class="hero__photo-frame">
+      <Image src={vehicle} alt="夜間に停車するスピードチングの軽トラックの随伴車" widths={[480, 720, 1108]} sizes="(max-width: 1023px) 100vw, 46vw" loading="eager" fetchpriority="high" format="webp" quality={85} class="hero__photo" />
+      <span class="hero__photo-corner hero__photo-corner--top" aria-hidden="true"></span>
+      <span class="hero__photo-corner hero__photo-corner--bottom" aria-hidden="true"></span>
+    </div>
+    <div class="hero__photo-note"><span class="hero__photo-note-line" aria-hidden="true"></span><p>この軽トラが、目印です。</p></div>
+  </div>
+</section>

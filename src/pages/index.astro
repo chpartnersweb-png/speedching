@@ -1,16 +1,89 @@
 ---
+import { Image } from 'astro:assets';
+import nightRoad from '../assets/generated/night-road-reservation-v1.png';
+import Brand from '../components/Brand.astro';
+import Hero from '../components/Hero.astro';
+import BusinessInfo from '../components/BusinessInfo.astro';
+import Icon from '../components/Icon.astro';
+import PhoneLink from '../components/PhoneLink.astro';
+import { site } from '../data/site';
+import '../styles/global.css';
+
+const steps = [
+  { number: '01', title: 'まずは、お電話。', text: '代行運転も、車のお預かりも。ご相談・ご予約はこちらのお電話へ。', phone: true },
+  { number: '02', title: 'ご希望をお伝えください。', text: 'ご希望の日時、お迎え場所、行き先などをお聞かせください。' },
+  { number: '03', title: '内容をご相談。', text: '料金や対応エリア、車のお預かりについても、お電話でご確認ください。' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b111b" />
+    <meta name="description" content={site.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={site.title} />
+    <meta property="og:description" content={site.description} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{site.title}</title>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">本文へ移動</a>
+    <header class="site-header">
+      <div class="site-header__inner section-shell">
+        <a class="site-header__brand" href="#top" aria-label="スピードチング ページの先頭へ"><Brand /></a>
+        <nav class="site-header__nav" aria-label="メインナビゲーション"><a href="#hours">営業案内</a><a href="#storage">車のお預かり</a><a href="#information">店舗情報</a></nav>
+        <a class="site-header__phone" href={site.phoneHref} aria-label={`電話で予約・相談する ${site.phone}`}><Icon name="phone" /><span>{site.phone}</span><span class="site-header__phone-mobile">電話する</span></a>
+      </div>
+    </header>
+
+    <main id="main">
+      <Hero />
+      <div class="service-strip" aria-label="サービスのご案内"><div class="section-shell service-strip__inner"><span>代行運転</span><i aria-hidden="true"></i><span>車のお預かり</span><i aria-hidden="true"></i><span>電話でご予約</span></div></div>
+
+      <section id="hours" class="hours section-shell section-pad" aria-labelledby="hours-title">
+        <div class="section-heading"><p class="section-kicker">営業のご案内</p><h2 id="hours-title" class="section-title" data-reveal>週末の夜も。<br class="only-mobile" />事前のご予約も。</h2></div>
+        <div class="hours__board">
+          <div class="hours__regular"><p class="hours__label">通常の営業時間</p><p class="hours__days">{site.businessDays}</p><p class="hours__time"><span>20:00</span><span class="hours__time-to">〜 翌</span><span>3:00</span></p><p class="hours__closed">定休日：{site.closedDays}</p></div>
+          <div class="hours__reservation"><span class="hours__reservation-tag">事前予約なら</span><p class="hours__year-round">年中<span>受付</span></p><p>{site.reservation}<br />ご希望の日時は、お電話でご相談ください。</p><a class="text-link" href={site.phoneHref}>事前予約のお電話はこちら<Icon name="arrow" /></a></div>
+        </div>
+      </section>
+
+      <section id="storage" class="storage" aria-labelledby="storage-title">
+        <div class="storage__inner section-shell">
+          <div class="storage__copy" data-reveal><p class="section-kicker">車のお預かり</p><h2 id="storage-title" class="storage__title">車のお預かりも、<br /><span>やっています。</span></h2><p class="storage__description">代行運転とあわせて、車のお預かりも。<br />お預かりの期間や料金、受け渡しについては、<br class="only-desktop" />お気軽にお電話でご相談ください。</p><a class="text-link" href={site.phoneHref}>お預かりについて相談する<Icon name="arrow" /></a></div>
+          <div class="storage__drawing" aria-hidden="true">
+            <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 225h376" stroke="#415365" stroke-width="2" /><path d="M67 192v-61l28-63h114l25 64h109v60h-29m-42 0H154m-42 0H67Z" stroke="#6decf2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /><path d="M98 82h43v48H77m79-48h43l18 48h-61V82Zm78 50v45m0-31h109m-117 29h-12m-150-22h24v21H67" stroke="#6decf2" stroke-width="2.5" stroke-linejoin="round" /><circle cx="132" cy="191" r="23" stroke="#f5f7fa" stroke-width="3" /><circle cx="293" cy="191" r="23" stroke="#f5f7fa" stroke-width="3" /><circle cx="132" cy="191" r="8" stroke="#6decf2" stroke-width="2" /><circle cx="293" cy="191" r="8" stroke="#6decf2" stroke-width="2" /><path d="m125 68 4-16h41l5 16" stroke="#ffb45b" stroke-width="3" stroke-linejoin="round" /><path d="M150 29V16m-29 20-9-9m67 9 9-9" stroke="#ffb45b" stroke-width="2" stroke-linecap="round" /><path d="M235 68h106v37H235z" fill="#162d3a" stroke="#4f6e80" /><path d="M247 86h81" stroke="#6decf2" stroke-width="2" /><path d="M43 239h67m17 0h15m137 0h99" stroke="#ff69db" stroke-width="2" stroke-linecap="round" /></svg>
+            <span>代行運転 ＋ 車のお預かり</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="guide" class="guide section-shell section-pad" aria-labelledby="guide-title">
+        <div class="guide__heading"><div data-reveal><p class="section-kicker">ご予約・ご相談</p><h2 id="guide-title" class="section-title">まずは、お電話ください。</h2></div><p class="guide__heading-note">お帰りの予定が決まったら、<br />事前のご予約も承っております。</p></div>
+        <ol class="guide__steps">{steps.map((step) => <li class="guide__step" data-reveal><span class="guide__number" aria-hidden="true">{step.number}</span><h3>{step.title}</h3><p>{step.text}</p>{step.phone && <a class="guide__phone" href={site.phoneHref}><Icon name="phone" />{site.phone}</a>}</li>)}</ol>
+        <div class="guide__notes"><p>料金・対応エリアは、お電話でご確認ください。</p><p><span>お支払い</span><strong>{site.payment}</strong></p></div>
+      </section>
+
+      <BusinessInfo />
+
+      <section class="reservation" aria-labelledby="reservation-title">
+        <Image src={nightRoad} alt="" widths={[640, 1024, 1536]} sizes="100vw" format="webp" quality={80} loading="lazy" class="reservation__background" aria-hidden="true" />
+        <div class="reservation__inner section-shell"><p class="section-kicker">スピードチングの代行運転</p><h2 id="reservation-title" data-reveal>事前予約にて、<br class="only-mobile" /><span>年中受付。</span></h2><p class="reservation__description">代行運転・車のお預かりのご相談は、<br class="only-mobile" />お電話で。</p><PhoneLink class="reservation__phone" /><p class="reservation__hours">通常営業：{site.businessDays} {site.businessHours}</p></div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell"><div><Brand /><p>〒{site.postalCode} {site.address}</p><small>© {new Date().getFullYear()} {site.name}</small></div><a class="back-top" href="#top"><span>ページの先頭へ</span><Icon name="up" /></a></footer>
+    <aside class="mobile-call" aria-label="電話予約"><PhoneLink compact /></aside>
+
+    <script>
+      import { initMotion } from '../scripts/motion';
+      initMotion();
+    </script>
+  </body>
 </html>

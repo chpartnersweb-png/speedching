@@ -1,0 +1,5 @@
+---
+interface Props { class?: string; }
+const { class: className } = Astro.props;
+---
+<span class:list={['brand', className]} aria-label="スピードチング"><span aria-hidden="true">スピード<span class="brand__warm">チング</span><span class="brand__lines"></span></span></span>

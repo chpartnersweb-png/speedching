@@ -1,0 +1,15 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+interface Props {
+  label?: string;
+  compact?: boolean;
+  class?: string;
+}
+const { label = '電話で予約・相談する', compact = false, class: className } = Astro.props;
+---
+<a href={site.phoneHref} class:list={['phone-link', { 'phone-link--compact': compact }, className]} aria-label={`${label} ${site.phone}`}>
+  <span class="phone-link__icon"><Icon name="phone" /></span>
+  <span class="phone-link__content"><span class="phone-link__label">{label}</span><span class="phone-link__number">{site.phone}</span></span>
+  <Icon name="arrow" class="phone-link__arrow" />
+</a>

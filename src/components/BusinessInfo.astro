@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+const rows = [
+  ['店舗名', site.name],
+  ['所在地', `〒${site.postalCode}\n${site.address}`],
+  ['最寄駅', site.station],
+  ['通常営業', `${site.businessDays}\n${site.businessHours}`],
+  ['定休日', site.closedDays],
+  ['事前予約', '年中受付'],
+  ['お支払い', site.payment],
+  ['駐車場', site.parking],
+];
+---
+<section id="information" class="information section-shell section-pad" aria-labelledby="information-title">
+  <div class="information__intro" data-reveal>
+    <p class="section-kicker">店舗情報</p>
+    <h2 id="information-title" class="section-title">大分市下郡東の<br />スピードチングです。</h2>
+    <div class="information__location"><Icon name="pin" /><p>{site.address}<br /><span>{site.station}／駐車場あり</span></p></div>
+    <a class="text-link" href={site.phoneHref}>電話でお問い合わせ<Icon name="arrow" /></a>
+  </div>
+  <dl class="information__table">
+    {rows.map(([label, value]) => <div class="information__row"><dt>{label}</dt><dd>{value}</dd></div>)}
+    <div class="information__row"><dt>電話番号</dt><dd><a href={site.phoneHref}>{site.phone}</a></dd></div>
+  </dl>
+</section>
