@@ -6,6 +6,8 @@ import Hero from '../components/Hero.astro';
 import BusinessInfo from '../components/BusinessInfo.astro';
 import Icon from '../components/Icon.astro';
 import PhoneLink from '../components/PhoneLink.astro';
+import FareArea from '../components/FareArea.astro';
+import Seo from '../components/Seo.astro';
 import { site } from '../data/site';
 import '../styles/global.css';
 
@@ -22,22 +24,15 @@ const steps = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0b111b" />
-    <meta name="description" content={site.description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ja_JP" />
-    <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={site.title} />
-    <meta property="og:description" content={site.description} />
-    <meta name="twitter:card" content="summary" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{site.title}</title>
+    <Seo />
   </head>
   <body id="top">
     <a class="skip-link" href="#main">本文へ移動</a>
     <header class="site-header">
       <div class="site-header__inner section-shell">
         <a class="site-header__brand" href="#top" aria-label="スピードチング ページの先頭へ"><Brand /></a>
-        <nav class="site-header__nav" aria-label="メインナビゲーション"><a href="#hours">営業案内</a><a href="#storage">車のお預かり</a><a href="#information">店舗情報</a></nav>
+        <nav class="site-header__nav" aria-label="メインナビゲーション"><a href="#area-price">料金・エリア</a><a href="#hours">営業案内</a><a href="#storage">車のお預かり</a><a href="#information">店舗情報</a></nav>
         <a class="site-header__phone" href={site.phoneHref} aria-label={`電話で予約・相談する ${site.phone}`}><Icon name="phone" /><span>{site.phone}</span><span class="site-header__phone-mobile">電話する</span></a>
       </div>
     </header>
@@ -45,6 +40,8 @@ const steps = [
     <main id="main">
       <Hero />
       <div class="service-strip" aria-label="サービスのご案内"><div class="section-shell service-strip__inner"><span>代行運転</span><i aria-hidden="true"></i><span>車のお預かり</span><i aria-hidden="true"></i><span>電話でご予約</span></div></div>
+
+      <FareArea />
 
       <section id="hours" class="hours section-shell section-pad" aria-labelledby="hours-title">
         <div class="section-heading"><p class="section-kicker">営業のご案内</p><h2 id="hours-title" class="section-title" data-reveal>週末の夜も。<br class="only-mobile" />事前のご予約も。</h2></div>
@@ -67,7 +64,7 @@ const steps = [
       <section id="guide" class="guide section-shell section-pad" aria-labelledby="guide-title">
         <div class="guide__heading"><div data-reveal><p class="section-kicker">ご予約・ご相談</p><h2 id="guide-title" class="section-title">まずは、お電話ください。</h2></div><p class="guide__heading-note">お帰りの予定が決まったら、<br />事前のご予約も承っております。</p></div>
         <ol class="guide__steps">{steps.map((step) => <li class="guide__step" data-reveal><span class="guide__number" aria-hidden="true">{step.number}</span><h3>{step.title}</h3><p>{step.text}</p>{step.phone && <a class="guide__phone" href={site.phoneHref}><Icon name="phone" />{site.phone}</a>}</li>)}</ol>
-        <div class="guide__notes"><p>料金・対応エリアは、お電話でご確認ください。</p><p><span>お支払い</span><strong>{site.payment}</strong></p></div>
+        <div class="guide__notes"><p>初乗り{site.initialFareText}。詳しい料金は、お電話でご確認ください。</p><p><span>お支払い</span><strong>{site.payment}</strong></p></div>
       </section>
 
       <BusinessInfo />

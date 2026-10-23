@@ -90,6 +90,20 @@ svg { flex-shrink: 0; }
 .service-strip__inner { display: flex; align-items: center; justify-content: center; gap: 45px; min-height: 64px; color: #cad4df; font-size: 13px; font-weight: 700; letter-spacing: .15em; }
 .service-strip i { width: 4px; height: 4px; background: var(--pink); transform: rotate(45deg); }
 
+/* Visible text carries the same area and starting fare as the flyer. */
+.fare-area { padding-top: 50px; }
+.fare-area__board { display: grid; grid-template-columns: 1.35fr 1fr; border-block: 1px solid #425263; }
+.fare-area__area { display: flex; flex-direction: column; justify-content: center; padding: 24px 30px 24px 0; }
+.fare-area__label { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.fare-area__places { margin-top: 8px; font-size: clamp(21px, 2.1vw, 27px); font-weight: 800; line-height: 1.7; letter-spacing: .025em; }
+.fare-area__fare { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 20px; border-left: 1px solid var(--line); padding: 20px 0 20px 35px; }
+.fare-area__fare .fare-area__label > span { display: block; color: var(--white); font-family: Arial, sans-serif; font-size: 23px; letter-spacing: 0; }
+.fare-area__price { display: flex; align-items: baseline; gap: 8px; color: var(--orange); white-space: nowrap; }
+.fare-area__price strong { font-family: Arial, sans-serif; font-size: clamp(42px, 4.8vw, 61px); font-weight: 700; line-height: 1.4; letter-spacing: -.04em; }
+.fare-area__price > span { font-size: 23px; font-weight: 700; }
+.fare-area__note { margin-top: 13px; font-size: 12px; color: var(--muted); }
+.fare-area__note a { color: var(--cyan); text-decoration: underline; text-underline-offset: 4px; }
+
 /* Hours use a single information board, rather than feature cards. */
 .section-heading { margin-bottom: 32px; }
 .hours__board { display: grid; grid-template-columns: 1.05fr 1fr; border: 1px solid #3b4a58; border-top: 3px solid var(--cyan); background: var(--panel); }
@@ -173,7 +187,7 @@ svg { flex-shrink: 0; }
 
 @media (max-width: 1150px) {
   .section-shell { width: calc(100% - 72px); }
-  .site-header__nav { gap: 18px; }
+  .site-header__nav { gap: 14px; font-size: 12px; }
   .site-header__inner { gap: 22px; }
   .brand { font-size: 21px; }
   .site-header__phone { font-size: 16px; }
@@ -268,6 +282,15 @@ svg { flex-shrink: 0; }
   .hero__photo { aspect-ratio: 6 / 5; object-position: center 62%; }
   .hero__photo-corner { width: 28px; height: 28px; }
   .hero__photo-note { margin-top: 13px; font-size: 10px; }
+  .fare-area { padding-top: 34px; }
+  .fare-area__board { grid-template-columns: 1fr; }
+  .fare-area__area { padding: 19px 0; }
+  .fare-area__places { font-size: 23px; margin-top: 7px; }
+  .fare-area__separator { display: none; }
+  .fare-area__fare { padding: 17px 0; border-left: 0; border-top: 1px solid var(--line); }
+  .fare-area__price strong { font-size: 53px; }
+  .fare-area__price > span { font-size: 21px; }
+  .fare-area__note { font-size: 11px; line-height: 1.9; }
   .service-strip__inner { gap: 15px; min-height: 51px; font-size: 10px; letter-spacing: .07em; }
   .service-strip i { width: 3px; height: 3px; }
   .section-heading { margin-bottom: 24px; }

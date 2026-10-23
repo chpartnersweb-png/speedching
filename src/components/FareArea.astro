@@ -1,0 +1,18 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="area-price" class="fare-area section-shell" aria-labelledby="fare-area-title">
+  <h2 id="fare-area-title" class="section-kicker">代行運転の料金・対応エリア</h2>
+  <div class="fare-area__board">
+    <div class="fare-area__area">
+      <p class="fare-area__label">即対応エリア</p>
+      <p class="fare-area__places">{site.serviceAreas[0]}<span class="fare-area__separator">、</span><br class="only-mobile" />{site.serviceAreas[1]}</p>
+    </div>
+    <div class="fare-area__fare">
+      <p class="fare-area__label">初乗り <span>{site.initialFare.distanceKm}km</span></p>
+      <p class="fare-area__price"><strong>{site.initialFare.priceFrom.toLocaleString('ja-JP')}</strong><span>円〜</span></p>
+    </div>
+  </div>
+  <p class="fare-area__note">詳しい料金やお迎えのご相談は、<a href={site.phoneHref}>お電話</a>でお問い合わせください。</p>
+</section>
