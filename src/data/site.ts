@@ -11,7 +11,7 @@ export const site = {
   phoneHref: 'tel:08039576137',
   internationalPhone: '+81-80-3957-6137',
   postalCode: '870-0953',
-  address: '大分県大分市下郡東',
+  address: '大分県大分市下郡',
   station: '牧駅から徒歩8分',
   businessDays: '金・土・日・祝',
   businessHours: '20:00〜翌3:00',
